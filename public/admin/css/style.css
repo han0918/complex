@@ -1,0 +1,175 @@
+.navbar { position: relative; position: fixed; width: 100%; min-width: 640px; height: 50px; background: #2a94de; z-index: 101; color: #fff; border-radius: 0px; min-height: 50px; line-height: 50px; margin: 0px; }
+.navbar a { color: #fff; }
+.navbar .navbar-brand { line-height: 28px; height: inherit; }
+.navbar-nav > li > a { line-height: 29px; color: #fff; }
+.navbar-nav > li { border-left: 1px solid #008fbf; }
+.nav > li > a:hover, .nav > li > a:focus { color: #fff; background-color: #1380cb; }
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus { color: #000; }
+.main { position: absolute; width: 100%; min-width: 1200px; top: 50px; bottom: 0px; background-color: #000; }
+.main .sidebar { position: fixed; top: 50px; bottom: 0px; background-color: #293038; z-index: 102; }
+
+.main .sidebar .sidebar-content{width: 180px;
+    overflow: hidden;}
+#menu .nav > li > a  {color: #fff;}
+#menu .nav > li > a:hover, #menu .nav > li > a:focus {
+    background-color: #37424f;
+}
+#menu  .nav > li > a > [class*='icon-'], #menu > .nav > li > .nav > li > a > [class*='icon-'] {color: #fff;}
+
+#menu > .nav > li.show > a, #menu > .nav > li.show > a:hover, #menu > .nav > li.show > a:focus { background-color:inherit;}
+#menu > .nav > li > .nav { background-color:inherit;}
+#menu > .nav > li > .nav > li > a { border:none}
+#menu > .nav > li > .nav > li > a:hover, #menu > .nav > li > .nav > li > a:focus {
+    background-color: #37424f;
+}
+.main .content { width: auto; position: absolute; top: 0px; left: 180px; bottom: 0px; right: 0px;   overflow: auto; background: #FFF; min-width: 1075px; padding: 15px; }
+
+.tit {     border-bottom: 1px solid #d9dfe4;
+    padding: 5px 0;
+    margin:  20px 0;
+}
+.tit h3{
+    position: relative;
+    height: 20px;
+    line-height: 20px;
+    color: #363636;
+    border-left: 2px solid #0098cd;
+    font-size: 16px; margin: 0px;
+    text-indent: 1em;
+}
+
+.login { background: url("../images/login-bg.png") repeat-x; padding-top: 10%;}
+
+/*=====================以下部分是Validform必须的====================*/
+.Validform_checktip{ margin-left:8px; line-height:20px; height:20px; overflow:hidden; color:#999; font-size:14px; }
+.Validform_right{ color:#71b83d; padding-left:20px; background:url(../images/valid_icons.png) no-repeat -40px -20px; }
+.Validform_wrong{ color:red; padding-left:20px; white-space:nowrap; background:url(../images/valid_icons.png) no-repeat -20px -40px; }
+.Validform_loading{ padding-left:20px; background:url(../images/icon_onload.gif) no-repeat left center; }
+
+.Validform_error{
+    background-color:#fa5556;
+}
+
+#Validform_msg{color:#7d8289; font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; width:280px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999'); box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);}
+#Validform_msg .iframe{ position:absolute; left:0px; top:-1px; z-index:-1; }
+#Validform_msg .Validform_title{ position:relative; line-height:35px; height:35px; text-align:left; font-weight:bold; padding:0 10px; color:#fff; background:#33B5E5; }
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{ line-height:30px; position:absolute; right:10px; top:0px; color:#fff; text-decoration:none; }
+#Validform_msg a.Validform_close:hover{color:#ccc;}
+#Validform_msg .Validform_info{padding:10px;border:1px solid #bbb; border-top:none; text-align:left;}
+/*=====================以上部分是Validform必须的====================*/
+
+
+.div-content{ padding:10px 0; font-size:12px; color:#666; }
+.div-content dl{ clear:both; display:block; padding:5px 0; line-height:30px; }
+.div-content dl:after{ clear:both; content:"."; display:block; height:0; visibility:hidden; }
+.div-content dl dt{ display:block; float:left; width:130px; text-align:right; color:#333;line-height:30px; }
+.div-content dl dd{ margin-left:150px;  }
+a,dl, dt, dd, ol, ul, li{ margin:0; padding:0; border:0; font-size:100%; text-decoration:none; }
+/*规格列表样式*/
+a img { border:none; }
+ol, ul { list-style:none; }
+.spec-item{ }
+.spec-item li{ float:left; position:relative; margin:0 8px 8px 0; padding:1px; line-height:20px; vertical-align:middle; }
+.spec-item li a{ display:block; padding:1px; color:#666; min-width:10px; width:auto !important;  text-align:center; text-decoration:none; border:1px solid #eee; cursor:pointer; white-space:nowrap; text-overflow:ellipsis; vertical-align:middle; }
+.spec-item li a i{ display:inline-block; padding:3px 9px; font-style:normal; line-height:20px; }
+.spec-item li a img{ width:32px; height:32px; vertical-align:middle; }
+.spec-item li:after{ content:"."; display:none; position:absolute; right:0; bottom:0; width:12px; height:12px; text-indent:-99em; background:url(../images/icon_sel.png)  no-repeat; overflow:hidden; }
+.spec-item li.selected a{ margin:-1px; color:#333; border:2px solid #1e99c7; }
+.spec-item li.selected:after{ display:block;   }
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .pagination > li {
+    display: inline;
+  }
+  .pagination > li > a,
+  .pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  .pagination > li:first-child > a,
+  .pagination > li:first-child > span {
+    margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+  .pagination > li:last-child > a,
+  .pagination > li:last-child > span {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+  .pagination > li > a:hover,
+  .pagination > li > span:hover,
+  .pagination > li > a:focus,
+  .pagination > li > span:focus {
+    z-index: 2;
+    color: #23527c;
+    background-color: #eee;
+    border-color: #ddd;
+  }
+  .pagination > .active > a,
+  .pagination > .active > span,
+  .pagination > .active > a:hover,
+  .pagination > .active > span:hover,
+  .pagination > .active > a:focus,
+  .pagination > .active > span:focus {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+  }
+  .pagination > .disabled > span,
+  .pagination > .disabled > span:hover,
+  .pagination > .disabled > span:focus,
+  .pagination > .disabled > a,
+  .pagination > .disabled > a:hover,
+  .pagination > .disabled > a:focus {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd;
+  }
+  .pagination-lg > li > a,
+  .pagination-lg > li > span {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+  }
+  .pagination-lg > li:first-child > a,
+  .pagination-lg > li:first-child > span {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+  .pagination-lg > li:last-child > a,
+  .pagination-lg > li:last-child > span {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+  .pagination-sm > li > a,
+  .pagination-sm > li > span {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .pagination-sm > li:first-child > a,
+  .pagination-sm > li:first-child > span {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+  .pagination-sm > li:last-child > a,
+  .pagination-sm > li:last-child > span {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+   
