@@ -15,7 +15,8 @@ class CategroyController extends Controller
      */
     public function index()
     {
-        return view('admin.categroy_list');
+        $categroy = Categroy::all();
+        return view('admin.categroy_list',['categroy'=>$categroy]);
     }
 
     /**
@@ -34,21 +35,46 @@ class CategroyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,Categroy $categroy)
+    public function store(Request $request)
     {
-        $categroy_id = Categroy::where('name',$request->name)->value('id');
-        if(!empty($categroy_id)){
-            return   show_res(0,'您已添加了该分类');
+
+
+    }
+
+    public function categroy_add(Request $request,Categroy $categroy)
+    {
+        if($request->name != $categroy->name){
+            $categroy_id = Categroy::where('name',$request->name)->value('id');
+            if(!empty($categroy_id)){
+                return   show_res(0,'您已添加了该分类');
+            }
         }
         $categroy->name = $request->name;
         $categroy->images = $request->images;
+        $categroy->keyword = $request->keyword;
+        $categroy->content = $request->contents;
         if($categroy->save()){
             return   show_res(1,'success',route('categroy.index'));
         }else{
-            return   show_res(0,'添加失败');
+            return   show_res(0,'更新失败');
         }
-
     }
+
+    public function categroy_del(Request $request)
+    {
+        $bool = Categroy::destroy($request->id);
+        if($bool){
+            return   show_res(1,'success');
+        }else{
+            return   show_res(0,'删除失败');
+        }
+    }
+
+    public function subclass()
+    {
+        return view('admin.categroy_subclass');
+    }
+
 
     /**
      * Display the specified resource.
@@ -67,9 +93,9 @@ class CategroyController extends Controller
      * @param  \App\Article_categroy  $article_categroy
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categroy $article_categroy)
+    public function edit(Categroy $categroy)
     {
-        //
+        return view('admin.categroy_add',['categroy'=>$categroy]);
     }
 
     /**

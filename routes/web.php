@@ -19,7 +19,10 @@ Route::post('/uploadpic','UploadController@uploadpic');
 
 Route::group(['middleware' => ['auth:admin'],'prefix' => 'admin','namespace' => 'admin'],function(){
     Route::resource('article','ArticleController',['except'=>['show']]);
-    Route::resource('categroy','CategroyController',['except'=>['show']]);
+    Route::get('categroy/subclass/{categroy?}','CategroyController@subclass')->name('categroy.subclass');
+    Route::post('categroy/add/{categroy?}','CategroyController@categroy_add')->name('categroy.add');
+    Route::post('categroy/del/{categroy?}','CategroyController@categroy_del')->name('categroy.del');
+    Route::resource('categroy','CategroyController',['except'=>['show','update','destroy']]);
 });
 
 Route::delete('admin/logout','Auth\LoginController@destroy')->middleware('auth:admin')->name('admin.logout');

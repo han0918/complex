@@ -13,24 +13,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 text-right">封面图片 </label>
-
-                    <div class="col-md-6 col-sm-10">
-                        <input type="hidden" class="form-control" name="images" id="img" placeholder=""  value="" >
-
-                        <input type="file" id="inputfile" style="height:0;width:0;z-index: -1; position: absolute;left: 10px;top: 5px;" value=""/>
-                        <div>
-                            <img id="imghead" width=120 height=auto border=0 src=
-                            @if(empty($categroy->images))
-                                    /images/pho.jpg
-                                 @else
-                                 {{$categroy->images}}
-                                 @endif
-                                 style="padding: 5px;" onclick="getElementById('inputfile').click()">
-                            <p class="help-block">  </p>
-                        </div>
-
-                    </div>
+                    <label class="col-sm-2 text-right">分类属性</label>
+                    <select name="college_name" id="college_name"  class="selectpicker show-tick form-control" data-live-search="true">
+                        @if(isset($college)&&count($college))
+                            @foreach($college as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
+                        @endif
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 text-right">关键词</label>

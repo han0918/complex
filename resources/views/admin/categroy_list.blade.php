@@ -8,7 +8,8 @@
         <h3>病类列表</h3>
     </div>
 
-    <div class="pull-right"><a href="{{route('categroy.create')}}" class="btn btn-danger">添加</a></div>
+    <div class="pull-left" style="margin-right: 10px"><a href="{{route('categroy.create')}}" class="btn btn-danger">添加分类</a></div>
+    <div class="pull-left" style="margin-bottom: 10px"><a href="{{route('categroy.create')}}" class="btn btn-primary">添加属性</a></div>
     <table class="table table-bordered table-hover table-striped" id="list">
         <thead>
         <tr>
@@ -19,15 +20,15 @@
         </tr>
         </thead>
         <tbody>
-        @if((isset($list)&&count($list))>0)
-            @foreach($list as $k=>$item)
+        @if((isset($categroy)&&count($categroy))>0)
+            @foreach($categroy as $k=>$item)
                 <tr>
                     <td >{{$item->id}}</td>
-                    <td ><a href="/news_content/{{$item->id}}">{{$item->title}}</a></td>
+                    <td >{{$item->name}}</td>
                     <td >{{$item->created_at}}</td>
                     <td >
-                        <a href="#" class="btn btn-sm btn-success"><i class="icon-edit"></i></a>
-
+                        <a href="{{route('categroy.subclass',['id' => $item->id])}}" class="btn btn-sm btn-primary"><i class="icon-plus"></i></a>
+                        <a href="{{route('categroy.edit',['id' => $item->id])}}" class="btn btn-sm btn-success"><i class="icon-edit"></i></a>
                         <button type="button" class="btn btn-sm btn-danger" onclick="del(function(){ _del({{$item->id}}); })"><i class="icon-trash"></i></button>
                     </td>
                 </tr>
@@ -45,7 +46,7 @@
         function _del(uid){
 
             $.ajax({
-                {{--url:'{{route('article.del')}}',--}}
+                url:'{{route('categroy.del')}}',
                 data:{'_token':'{{ csrf_token()}}',id:uid},
                 type:"POST",
                 dataType:'json',

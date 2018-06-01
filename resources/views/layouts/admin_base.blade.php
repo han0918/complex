@@ -49,10 +49,8 @@
                 <ul class="nav">
 
                     <li><a href="#"><i class="icon icon-file-text"></i> 管理员管理</a></li>
-                    <li><a href="{{route('categroy.index')}}"><i class="icon icon-rocket"></i> 病类管理</a></li>
+                    <li><a href="{{route('categroy.index')}}"><i class="icon icon-rocket"></i> 分类管理</a></li>
                     <li><a href="{{route("article.index")}}"><i class="icon icon-plane"></i> 文章管理</a></li>
-                    <li><a href="#"><i class="icon icon-rocket"></i> 关键词管理</a></li>
-
                 </ul>
             </nav>
         </div>

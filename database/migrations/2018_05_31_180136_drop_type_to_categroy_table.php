@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddKeywordToCategroyTable extends Migration
+class DropTypeToCategroyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddKeywordToCategroyTable extends Migration
     public function up()
     {
         Schema::table('categroys', function (Blueprint $table) {
-            $table->string('keyword')->after('images')->comment('关键词');
-            $table->string('content')->after('keyword')->comment('关键词内容');
+            $table->dropColumn('type');
         });
     }
 
@@ -27,8 +26,7 @@ class AddKeywordToCategroyTable extends Migration
     public function down()
     {
         Schema::table('categroys', function (Blueprint $table) {
-            $table->dropColumn('keyword');
-            $table->dropColumn('content');
+            $table->tinyInteger('type')->comment('类型');
         });
     }
 }
