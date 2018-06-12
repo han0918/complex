@@ -16,7 +16,7 @@
                     <label class="col-sm-2 text-right">封面图片 </label>
 
                     <div class="col-md-6 col-sm-10">
-                        <input type="hidden" class="form-control" name="images" id="img" placeholder=""  value="" >
+                        <input type="hidden" class="form-control" name="images" id="img" placeholder=""  datatype="*" nullmsg="请上传封面图片！" value="{{$categroy->images}}" >
 
                         <input type="file" id="inputfile" style="height:0;width:0;z-index: -1; position: absolute;left: 10px;top: 5px;" value=""/>
                         <div>

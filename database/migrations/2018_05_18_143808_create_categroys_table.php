@@ -17,7 +17,7 @@ class CreateCategroysTable extends Migration
             $table->increments('id');
             $table->string('name')->comment('分类名称');
             $table->integer('parent_id')->index()->default(0)->comment('父级ID');
-            $table->tinyInteger('type')->comment('类型');
+            $table->tinyInteger('type')->index()->default(0)->comment('类型');
             $table->string('images')->nullable()->comment('图片');
             $table->timestamps();
         });

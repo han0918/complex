@@ -15,7 +15,8 @@ class CrateAttributeTable extends Migration
     {
         Schema::create('attributes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string();
+            $table->string('name')->comment('属性名称');
+            $table->integer('categroy_id')->comment('分类ID');
             $table->timestamps();
         });
     }

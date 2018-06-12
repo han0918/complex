@@ -48,9 +48,10 @@
             <nav class="menu" data-ride="menu"   id="menu" >
                 <ul class="nav">
 
-                    <li><a href="#"><i class="icon icon-file-text"></i> 管理员管理</a></li>
+                    <li><a href="{{route('admin.index')}}"><i class="icon icon-file-text"></i> 管理员管理</a></li>
                     <li><a href="{{route('categroy.index')}}"><i class="icon icon-rocket"></i> 分类管理</a></li>
                     <li><a href="{{route("article.index")}}"><i class="icon icon-plane"></i> 文章管理</a></li>
+                    <li><a href="{{route("setting.index")}}"><i class="icon icon-spin icon-cog"></i> 网站设置</a></li>
                 </ul>
             </nav>
         </div>

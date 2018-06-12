@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DropTypeToCategroyTable extends Migration
+class AddStateToArticles extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class DropTypeToCategroyTable extends Migration
      */
     public function up()
     {
-        Schema::table('categroys', function (Blueprint $table) {
-            $table->dropColumn('type');
+        Schema::table('articles', function (Blueprint $table) {
+            $table->tinyInteger('state')->default(0)->index()->comment('1热门推荐');
         });
     }
 
@@ -25,8 +25,8 @@ class DropTypeToCategroyTable extends Migration
      */
     public function down()
     {
-        Schema::table('categroys', function (Blueprint $table) {
-            $table->tinyInteger('type')->comment('类型');
+        Schema::table('articles', function (Blueprint $table) {
+            $table->dropColumn('state');
         });
     }
 }

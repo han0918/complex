@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Attribute;
 use App\Models\Categroy;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,12 @@ class CategroyController extends Controller
      */
     public function index()
     {
-        $categroy = Categroy::all();
+        $categroy = Categroy::where('parent_id',0)->get();
+        foreach ($categroy as $item){
+            $item->count = $item::where('parent_id',$item->id)->count('id');
+            $dattribute = $item->attributes;
+            $item->attribute = $dattribute;
+        }
         return view('admin.categroy_list',['categroy'=>$categroy]);
     }
 
@@ -27,18 +33,6 @@ class CategroyController extends Controller
     public function create(Categroy $categroy)
     {
         return view('admin.categroy_add',['categroy'=>$categroy]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-
     }
 
     public function categroy_add(Request $request,Categroy $categroy)
@@ -62,7 +56,10 @@ class CategroyController extends Controller
 
     public function categroy_del(Request $request)
     {
-        $bool = Categroy::destroy($request->id);
+        $categroy = Categroy::find($request->id);
+        $categroy->unattribute();
+        $bool = $categroy->delete();
+
         if($bool){
             return   show_res(1,'success');
         }else{
@@ -70,21 +67,20 @@ class CategroyController extends Controller
         }
     }
 
-    public function subclass()
-    {
-        return view('admin.categroy_subclass');
-    }
-
-
     /**
      * Display the specified resource.
      *
      * @param  \App\Article_categroy  $article_categroy
      * @return \Illuminate\Http\Response
      */
-    public function show(Categroy $article_categroy)
+    public function show(Categroy $categroy)
     {
-        //
+        $categroys = Categroy::where('parent_id',$categroy->id)->get();
+        foreach ($categroys as $item){
+            $attributes = $item->attribute;
+            $item->attribute = $attributes;
+        }
+        return view('admin.categroy_show',['categroys'=>$categroys,'categroy'=>$categroy]);
     }
 
     /**
@@ -98,26 +94,5 @@ class CategroyController extends Controller
         return view('admin.categroy_add',['categroy'=>$categroy]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Article_categroy  $article_categroy
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Categroy $article_categroy)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Article_categroy  $article_categroy
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Categroy $article_categroy)
-    {
-        //
-    }
 }

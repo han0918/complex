@@ -1,7 +1,7 @@
 @extends('layouts.admin_base')
 @section('content')
     <div class="tit">
-        <h3>分类信息</h3>
+        <h3><a href="{{route('categroy.index')}}">{{$categroy->name}}</a> <img src="/images/zhi.png" width="15px">分类信息</h3>
     </div>
     <div class="panel">
         <div class="panel-body ">
@@ -9,29 +9,35 @@
                 <div class="form-group">
                     <label class="col-sm-2 text-right">分类名称</label>
                     <div class="col-md-6 col-sm-10">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="分类名称" datatype="*1-20" nullmsg="请填写分类名称！" value="{{$categroy->name}}">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="分类名称" datatype="*1-20" nullmsg="请填写分类名称！" value="{{$subclass->name}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 text-right">分类属性</label>
-                    <select name="college_name" id="college_name"  class="selectpicker show-tick form-control" data-live-search="true">
-                        @if(isset($college)&&count($college))
-                            @foreach($college as $item)
-                                <option value="{{$item->id}}">{{$item->name}}</option>
-                            @endforeach
-                        @endif
-                    </select>
+                    <div class="col-md-6 col-sm-10">
+                        <select name="type" id="type"  class="selectpicker show-tick form-control" data-live-search="true">
+                            @if(isset($attributes)&&count($attributes))
+                                @foreach($attributes as $item)
+                                    @if($item->id == $subclass->type)
+                                        <option value="{{$item->id}}" selected>{{$item->name}}</option>
+                                    @else
+                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                    @endif
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 text-right">关键词</label>
                     <div class="col-md-6 col-sm-10">
-                        <textarea class="form-control" name="keyword" id="keyword" rows="3" placeholder="关键词" datatype="*" nullmsg="请填写关键词！">{{$categroy->keyword}}</textarea>
+                        <textarea class="form-control" name="keyword" id="keyword" rows="3" placeholder="关键词" datatype="*" nullmsg="请填写关键词！">{{$subclass->keyword}}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 text-right">关键词内容</label>
                     <div class="col-md-6 col-sm-10">
-                        <textarea class="form-control" name="contents" id="content" rows="5" placeholder="关键词内容" datatype="*" nullmsg="请填写关键词内容！">{{$categroy->content}}</textarea>
+                        <textarea class="form-control" name="contents" id="content" rows="5" placeholder="关键词内容" datatype="*" nullmsg="请填写关键词内容！">{{$subclass->content}}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -70,13 +76,13 @@
         })
         function checkInfo(){
             $.ajax({
-                url:'{{route('categroy.add',['categroy'=>$categroy])}}',
+                url:'{{route('subclass.put',['subclass'=>$subclass])}}',
                 data:$('.form-horizontal').serialize(),
                 type:"POST",
                 dataType:'json',
                 success:function (res) {
                     if(res.status){
-                        go_to(res.data);
+                        self.location = document.referrer
                     }
                     else {
                         nbalert(res.msg)
@@ -90,41 +96,5 @@
             });
 
         }
-
-        //上传图片
-        $('#inputfile').change(function(){
-
-            //创建FormData对象
-            var data = new FormData();
-            //为FormData对象添加数据
-            $.each($('#inputfile')[0].files, function (i, file) {
-                data.append('upload_file' + i, file);
-            });
-            $.ajax({
-                type: "POST",
-                url: '/uploadpic',
-                dataType: 'json',
-                cache: false,
-                contentType: false,		//不可缺参数
-                processData: false,		//不可缺参数
-                data:data,
-                success: function(res) {
-
-                    if(res.code == 0 ){
-                        $('#imghead').attr("src", res.imgurl);
-                        $('#img').val(res.imgurl);
-                        $('#img').show();
-                    }else if(res.code == 1 ){
-                        layer.msg(res.msg,{offset:'c'})
-                        return false;
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.log(xhr);
-                    console.log(status);
-                    console.log(error);
-                }
-            });
-        })
     </script>
 @endsection

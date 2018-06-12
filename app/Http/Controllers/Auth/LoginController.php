@@ -46,7 +46,7 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $credentials = $this->validate($request,[
-            'name' => 'required|max:255',
+            'name' => 'required|min:5|max:50',
             'password' => 'required'
         ]);
         if(Auth::guard('admin')->attempt($credentials,$request->has('remember'))){

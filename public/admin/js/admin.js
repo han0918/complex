@@ -170,7 +170,7 @@ function go_to(url)
 function erroralert(errorobj){
     if(errorobj.status==422){
         var msg='';
-        $.each(errorobj.responseJSON, function(index, value) {
+        $.each(errorobj.responseJSON.errors, function(index, value) {
             msg+=value;
         });
         nbalert(msg);
