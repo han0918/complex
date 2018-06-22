@@ -30,4 +30,11 @@ class Categroy extends Model
         return $this->belongsTo('App\Models\Categroy')->withDefault();
     }
 
+    public function articles()
+    {
+        return $this->hasMany('App\Models\article');
+    }
+
+
+
 }
