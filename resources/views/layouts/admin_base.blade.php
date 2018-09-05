@@ -27,6 +27,7 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
         <!--          <li class="active"><a href="#">帮助</a></li>-->
+        <a href="{{route('home.index')}}" target="_blank" class="navbar-brand" href="javascript:;">网站首页</a>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon icon-user"></i>{{auth('admin')->user()->name}} <b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu">
